@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f8fa;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f8fa;
+}
+
+.App-header {
+  background: white;
+  padding: 20px 0;
+  color: #222;
+  box-shadow: 0 1px 0 0 #e5e8eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.App-header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.App-header h1::before {
+  content: "🏠";
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: #7c8185;
+  font-weight: 400;
+}
+
+.App-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.spinner {
+  border: 4px solid #e5e8eb;
+  border-radius: 50%;
+  border-top: 4px solid #00c471;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  color: #222;
+  font-size: 1rem;
+}
+
+.App-footer {
+  background-color: #fff;
+  color: #7c8185;
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.875rem;
+  border-top: 1px solid #e5e8eb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .App-header h1::before {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .App-main {
+    padding: 16px 12px;
+  }
+}

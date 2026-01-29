@@ -1,0 +1,176 @@
+.comparison-chart {
+  background: white;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e8eb;
+}
+
+.chart-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f2f4f6;
+}
+
+.chart-container {
+  height: 400px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.no-data {
+  text-align: center;
+  padding: 60px 20px;
+  color: #7c8185;
+  font-size: 1rem;
+}
+
+.stats-container {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stats-count-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.stats-count-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.stats-count-4 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.stats-card {
+  background: #f7f8fa;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e5e8eb;
+}
+
+.stats-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e8eb;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-label {
+  font-size: 0.8125rem;
+  color: #7c8185;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.stat-value.positive {
+  color: #ff4a4a;
+}
+
+.stat-value.negative {
+  color: #0066ff;
+}
+
+.analysis-card {
+  background: #f7f8fa;
+  border-radius: 8px;
+  padding: 24px;
+  border: 1px solid #e5e8eb;
+}
+
+.analysis-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.analysis-content {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.analysis-content p {
+  margin: 0;
+}
+
+.analysis-content strong {
+  color: #222;
+  font-weight: 700;
+}
+
+.analysis-content .highlight {
+  color: #00c471;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .comparison-chart {
+    padding: 20px;
+    border-radius: 6px;
+  }
+
+  .chart-title {
+    font-size: 1.125rem;
+    margin-bottom: 20px;
+  }
+
+  .chart-container {
+    height: 300px;
+    margin-bottom: 24px;
+  }
+
+  .stats-container,
+  .stats-count-2,
+  .stats-count-3,
+  .stats-count-4 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stats-card {
+    padding: 16px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+
+  .analysis-card {
+    padding: 16px;
+  }
+
+  .analysis-content {
+    font-size: 0.875rem;
+  }
+}

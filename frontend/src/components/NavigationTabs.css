@@ -1,0 +1,45 @@
+/* 네비게이션 탭 */
+.navigation-tabs {
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 120px;
+  z-index: 90;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navigation-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs-container {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  min-width: min-content;
+}
+
+.tab-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f5f5f5;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.tab-button:hover {
+  background-color: #e8e8e8;
+}
+
+.tab-button.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+}

@@ -1,0 +1,68 @@
+/* 필터 섹션 */
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.filter-section::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-button {
+  padding: 8px 16px;
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.filter-button:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.filter-button.active {
+  background-color: #667eea;
+  border-color: #667eea;
+  color: #ffffff;
+}
+
+.filter-more {
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  color: #666;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  transition: all 0.2s;
+}
+
+.filter-more:hover {
+  background-color: #f5f5f5;
+}
