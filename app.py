@@ -10,6 +10,21 @@ CORS(app)
 
 BASE_URL = "https://realestate-be-dev.io.naver.com"
 
+@app.route('/', methods=['GET'])
+def index():
+    """Root endpoint"""
+    return jsonify({
+        'status': 'success',
+        'message': 'Real Estate Comparison API',
+        'endpoints': {
+            '/api/search/autocomplete': 'Search apartments',
+            '/api/complex/<id>': 'Get complex info',
+            '/api/complex/<id>/pyeong-types': 'Get pyeong types',
+            '/api/real-price': 'Get real price data',
+            '/health': 'Health check'
+        }
+    })
+
 @app.route('/api/search/autocomplete', methods=['GET'])
 def autocomplete():
     """아파트명 자동완성 API"""
