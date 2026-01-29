@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
+import os
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
@@ -248,6 +249,7 @@ def health_check():
 
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
     print("Starting Real Estate Comparison API Server...")
-    print("Server running on http://localhost:5000")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    print(f"Server running on port {port}")
+    app.run(debug=True, host='0.0.0.0', port=port)
