@@ -12,29 +12,44 @@ const ComparisonForm = ({ onCompare, period, onPeriodChange }) => {
 
   const [searchResults, setSearchResults] = useState([[], [], [], []]);
   const [loading, setLoading] = useState(false);
+  const [searchTimeout, setSearchTimeout] = useState(null);
 
-  // 아파트명 자동완성 검색
-  const searchApartment = async (keyword, index) => {
+  // 아파트명 자동완성 검색 (debounce 적용)
+  const searchApartment = (keyword, index) => {
+    // 이전 타이머 취소
+    if (searchTimeout) {
+      clearTimeout(searchTimeout);
+    }
+
     if (!keyword || keyword.length < 2) {
-      const newResults = [...searchResults];
-      newResults[index] = [];
-      setSearchResults(newResults);
+      setSearchResults(prevResults => {
+        const newResults = [...prevResults];
+        newResults[index] = [];
+        return newResults;
+      });
       return;
     }
 
-    try {
-      const response = await axios.get(`${API_URL}/api/search/autocomplete`, {
-        params: { keyword, size: 5 }
-      });
+    // 300ms 후에 실행
+    const timeoutId = setTimeout(async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/search/autocomplete`, {
+          params: { keyword, size: 5 }
+        });
 
-      if (response.data && response.data.data && response.data.data.list) {
-        const newResults = [...searchResults];
-        newResults[index] = response.data.data.list;
-        setSearchResults(newResults);
+        if (response.data && response.data.data && response.data.data.list) {
+          setSearchResults(prevResults => {
+            const newResults = [...prevResults];
+            newResults[index] = response.data.data.list;
+            return newResults;
+          });
+        }
+      } catch (error) {
+        console.error('Error searching apartment:', error);
       }
-    } catch (error) {
-      console.error('Error searching apartment:', error);
-    }
+    }, 300);
+
+    setSearchTimeout(timeoutId);
   };
 
   // 평형 정보 조회
@@ -74,22 +89,26 @@ const ComparisonForm = ({ onCompare, period, onPeriodChange }) => {
     const complexNumber = apartment.complexNumber;
     const name = apartment.complexName;
 
-    // 검색 결과 먼저 닫기
-    const newResults = [...searchResults];
-    newResults[index] = [];
-    setSearchResults(newResults);
+    // 검색 결과 즉시 닫기
+    setSearchResults(prevResults => {
+      const newResults = [...prevResults];
+      newResults[index] = [];
+      return newResults;
+    });
 
     // 아파트 정보 업데이트
-    const newApartments = [...apartments];
-    newApartments[index] = {
-      ...newApartments[index],
-      name,
-      complexNumber,
-      pyeongTypeNumber: '',
-      pyeongTypes: [],
-      isSearching: false
-    };
-    setApartments(newApartments);
+    setApartments(prevApartments => {
+      const newApartments = [...prevApartments];
+      newApartments[index] = {
+        ...newApartments[index],
+        name,
+        complexNumber,
+        pyeongTypeNumber: '',
+        pyeongTypes: [],
+        isSearching: false
+      };
+      return newApartments;
+    });
 
     // 평형 정보 조회
     fetchPyeongTypes(complexNumber, index);
@@ -150,7 +169,7 @@ const ComparisonForm = ({ onCompare, period, onPeriodChange }) => {
         newResults[index] = [];
         return newResults;
       });
-    }, 200);
+    }, 300);
   };
 
   // 평형 선택
