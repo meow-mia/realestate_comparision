@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/realestate_comparision/static/css/main.463605c6.css",
+    "main.js": "/realestate_comparision/static/js/main.add16212.js",
+    "index.html": "/realestate_comparision/index.html",
+    "main.463605c6.css.map": "/realestate_comparision/static/css/main.463605c6.css.map",
+    "main.add16212.js.map": "/realestate_comparision/static/js/main.add16212.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.463605c6.css",
+    "static/js/main.add16212.js"
+  ]
+}
