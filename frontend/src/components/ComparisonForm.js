@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './ComparisonForm.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const ComparisonForm = ({ onCompare, period, onPeriodChange }) => {
   const [apartments, setApartments] = useState([
     { name: '', complexNumber: '', pyeongTypeNumber: '', pyeongTypes: [], isSearching: false, isLoadingPyeong: false },
@@ -21,7 +23,7 @@ const ComparisonForm = ({ onCompare, period, onPeriodChange }) => {
     }
 
     try {
-      const response = await axios.get('http://localhost:5000/api/search/autocomplete', {
+      const response = await axios.get(`${API_URL}/api/search/autocomplete`, {
         params: { keyword, size: 5 }
       });
 
@@ -45,7 +47,7 @@ const ComparisonForm = ({ onCompare, period, onPeriodChange }) => {
     });
 
     try {
-      const response = await axios.get(`http://localhost:5000/api/complex/${complexNumber}/pyeong-types`);
+      const response = await axios.get(`${API_URL}/api/complex/${complexNumber}/pyeong-types`);
 
       if (response.data && response.data.pyeongTypeList) {
         const pyeongTypes = response.data.pyeongTypeList;
@@ -177,7 +179,7 @@ const ComparisonForm = ({ onCompare, period, onPeriodChange }) => {
     try {
       // 각 아파트의 실거래가 데이터 조회
       const requests = apartments.map(apt =>
-        axios.get('http://localhost:5000/api/real-price', {
+        axios.get(`${API_URL}/api/real-price`, {
           params: {
             complexNumber: apt.complexNumber,
             pyeongTypeNumber: apt.pyeongTypeNumber,

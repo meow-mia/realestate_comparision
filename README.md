@@ -68,11 +68,17 @@ cd frontend
 
 # 2. npm 패키지 설치
 npm install
+
+# 3. 환경변수 설정 (배포용)
+# .env.production 파일을 열고 회사 개발 서버 URL로 변경
+# REACT_APP_API_URL=https://your-company-dev-server.com
 ```
 
 ## 실행 방법
 
-### 1. Backend 서버 실행
+### 로컬 개발 환경
+
+#### 1. Backend 서버 실행
 
 ```bash
 # 프로젝트 루트 디렉토리에서
@@ -81,7 +87,7 @@ python app.py
 
 서버가 `http://localhost:5000`에서 실행됩니다.
 
-### 2. Frontend 개발 서버 실행
+#### 2. Frontend 개발 서버 실행
 
 ```bash
 # frontend 디렉토리에서
@@ -90,6 +96,24 @@ npm start
 ```
 
 브라우저가 자동으로 열리며 `http://localhost:3000`에서 앱을 확인할 수 있습니다.
+
+### GitHub Pages 배포
+
+```bash
+# frontend 디렉토리에서
+cd frontend
+
+# 배포 전에 .env.production에서 API URL 설정 확인
+# REACT_APP_API_URL을 회사 개발 서버 URL로 설정
+
+# GitHub Pages에 배포
+npm run deploy
+```
+
+배포 후 `https://meow-mia.github.io/realestate_comparision`에서 확인할 수 있습니다.
+
+**중요**: 배포된 사이트가 작동하려면 회사 네트워크에 연결되어 있어야 하며,
+회사 개발 서버에서 CORS가 허용되어 있어야 합니다.
 
 ## 사용 방법
 
